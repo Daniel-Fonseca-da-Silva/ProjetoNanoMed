@@ -1,10 +1,6 @@
 package view;
 
 import Model.CadastrarUsuario;
-import Model.FabricaConexao;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -203,28 +199,16 @@ public class Registration extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadActionPerformed
-        
-        String nome = txtNomeReg.getText();
-        String email = txtEmailReg.getText();
-        char[] senha = txtSenhaReg.getPassword();
-        String sql = "INSERT INTO usuario (nome, email, senha) values(?, ?, ?)";
-        Connection conexao = FabricaConexao.getConexao();
-        
-        try 
+
+        if((!txtNomeReg.getText().equals("")) && !txtEmailReg.getText().equals("") && !String.valueOf(txtSenhaReg.getPassword()).equals(""))
         {
-            PreparedStatement stmt = conexao.prepareStatement(sql);
-            stmt.setString(1, nome);
-            stmt.setString(2, email);
-            stmt.setString(3, String.valueOf(senha));
-            stmt.execute();
-            conexao.close();
-            JOptionPane.showMessageDialog(this, "Usuário cadastrado no sistema com sucesso");
-        } 
-        catch (SQLException e) 
-        {
-            JOptionPane.showMessageDialog(this,"Ocorreu um erro no sistema de " + e);
+            JOptionPane.showMessageDialog(this, "Usuário Cadastrado no sistema com sucesso");
+            CadastrarUsuario.Cadastrar(txtNomeReg.getText(), txtEmailReg.getText(), String.valueOf(txtSenhaReg.getPassword()));
         }
-        
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Usuário não cadastrado, tente novamente");
+        } 
     }//GEN-LAST:event_btnCadActionPerformed
 
     /**
