@@ -1,6 +1,6 @@
 package view;
 
-import Model.CadastrarUsuario;
+import model.CadastrarUsuario;
 import javax.swing.JOptionPane;
 
 /**

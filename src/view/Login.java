@@ -1,6 +1,6 @@
 package view;
 
-import Model.VerificaUsuario;
+import model.VerificaUsuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -179,45 +179,16 @@ public class Login extends javax.swing.JFrame {
         
         if(VerificaUsuario.verificar(txtMailLog.getText(), txtPassLog.getText()).equals(true))
         {
-             JOptionPane.showMessageDialog(null, "usuário logado com sucesso", "Menssagem de informativa", JOptionPane.INFORMATION_MESSAGE);
+             JOptionPane.showMessageDialog(null, "Usuário logado com sucesso", "Menssagem de informativa", JOptionPane.INFORMATION_MESSAGE);
+             this.dispose();
+             Store loja = new Store();
+             loja.setVisible(true);
+             
         }
         else
         {
             JOptionPane.showMessageDialog(null, "Verifique os dados e tente novamente", "Ops algo deu errado", JOptionPane.INFORMATION_MESSAGE);
         }
-        
-        
-//        Connection conexao = FabricaConexao.getConexao();
-//        String sql = "SELECT senha, email FROM usuario WHERE senha = ? AND email = ?";
-//        
-//        senha = txtPassLog.getText();
-//        email = txtMailLog.getText();
-//        
-//        try 
-//        {
-//            PreparedStatement stmt = conexao.prepareStatement(sql);
-//            stmt.setString(1, senha);
-//            stmt.setString(2, email);
-//            ResultSet resultado = stmt.executeQuery();
-//            
-//            if(resultado.next())
-//            {
-//               JOptionPane.showMessageDialog(this, "Usuário logado!");
-//            }
-//            else
-//            {
-//                JOptionPane.showMessageDialog(this, "Verifique seus dados e tente novamente");
-//            }
-//            
-//        } 
-//        catch (SQLException e) 
-//        {
-//            e.printStackTrace();
-//            JOptionPane.showMessageDialog(this, "erro!");
-//        }
-        
-        
-        
         
     }//GEN-LAST:event_btnLoginActionPerformed
 
